@@ -1,0 +1,73 @@
+<header>Angular Blog</header>
+
+<div class="container">
+
+  <form *ngIf="!signUp" name="log-in-form" #logInForm="ngForm">
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+      required
+      placeholder="Type your email:"
+      [(ngModel)]="user.email"
+    >
+    <br>
+    <input
+      type="password"
+      name="password"
+      minlength="6" maxlength="20"
+      placeholder="Type your password:"
+      required
+      [(ngModel)]="user.password"
+    >
+    <br>
+    <input
+      class="submit-input"
+      type="submit"
+      (click)="onLogIn(logInForm)"
+    >
+  </form>
+
+  <button *ngIf="!signUp" (click)="switchSignUp()">Sign Up</button>
+
+  <form *ngIf="signUp" name="sign-up-form" #signUpForm="ngForm">
+    <input
+      type="text"
+      name="name"
+      minlength="2"
+      maxlength="12"
+      required
+      placeholder="Type your name:"
+      [(ngModel)]="user.name"
+    >
+    <br>
+    <input
+      type="email"
+      name="email"
+      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+      required
+      placeholder="Type your email:"
+      [(ngModel)]="user.email"
+    >
+    <br>
+    <input
+      type="password"
+      name="password"
+      minlength="6"
+      maxlength="20"
+      required
+      placeholder="Type your name:"
+      [(ngModel)]="user.password"
+    >
+    <br>
+    <input
+      class="submit-input"
+      type="submit"
+      (click)="onSignUp(signUpForm)"
+    >
+  </form>
+
+  <button *ngIf="signUp" (click)="switchSignUp()">Log In</button>
+
+</div>
