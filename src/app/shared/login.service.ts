@@ -20,7 +20,7 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  logIn(user: User): void {
+  logIn(user: any): void {
     this.http.get<User[]>(`${environment.baseUrl}/users?email=${user.email}&password=${user.password}`)
       .pipe(take(1))
       .subscribe((receivedUser: User[]): void => {
@@ -34,7 +34,7 @@ export class LoginService {
       });
   }
 
-  signUp(user: User): void {
+  signUp(user: any): void {
     this.http.get<User[]>(`${environment.baseUrl}/users?email=${user.email}`)
       .pipe(
         take(1),

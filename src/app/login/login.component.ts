@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgControl, NgForm } from '@angular/forms';
+import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../shared/login.service';
 
 export interface User {
@@ -15,29 +15,65 @@ export interface User {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user: User = {
-    name: '',
-    email: '',
-    password: '',
-    admin: false
-  };
 
-  signUp = false;
+  signUp = false; // Changes logIn and signUp forms
+
+  // Forms
+
+  logInForm: FormGroup = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(6),
+      Validators.maxLength(30)
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(20)
+    ])
+  });
+
+  signUpForm: FormGroup = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(6),
+      Validators.maxLength(30)
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(20)
+    ]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(14)
+    ])
+  });
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
-  onLogIn(form: NgForm): void {
-    if (form.valid) {
-      this.loginService.logIn(this.user);
+  onLogIn(): void {
+    if (this.logInForm.valid) {
+      this.loginService.logIn({
+        email: this.logInForm.controls.email.value,
+        password: this.logInForm.controls.password.value
+      });
     }
   }
 
-  onSignUp(form: NgForm): void {
-    if (form.valid) {
-      this.loginService.signUp(this.user);
+  onSignUp(): void {
+    if (this.signUpForm.valid) {
+      this.loginService.signUp({
+        email: this.signUpForm.controls.email.value,
+        password: this.signUpForm.controls.password.value,
+        admin: false
+      });
     }
   }
 
