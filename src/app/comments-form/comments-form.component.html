@@ -1,0 +1,10 @@
+<form [formGroup]="commentsForm" (submit)="onSubmit()">
+  <textarea
+    type="text"
+    class="comments-textarea"
+    formControlName="commentBody"
+    maxlength="400"
+    placeholder="Type a comment"
+  ></textarea>
+  <input class="submit-input" type="submit">
+</form>

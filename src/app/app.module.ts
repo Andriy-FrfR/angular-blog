@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
+import { CommentsFormComponent } from './comments-form/comments-form.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PostComponent } from './post/post.component';
     MainComponent,
     PostsComponent,
     PostComponent,
+    CommentsFormComponent,
   ],
   imports: [
     BrowserModule,

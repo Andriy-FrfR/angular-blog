@@ -7,7 +7,14 @@ export interface Post {
   title: string;
   author: string;
   content: string;
-  comments: object;
+  comments: Array<Comment>;
+}
+
+export interface Comment {
+  id: number;
+  author: string;
+  body: string;
+  date: Date;
 }
 
 @Injectable({
@@ -22,5 +29,9 @@ export class PostsService {
 
   getPosts(): any {
     return this.http.get<Post[]>(`${environment.baseUrl}/posts`);
+  }
+
+  addComment(): void {
+    console.log('add comment works');
   }
 }

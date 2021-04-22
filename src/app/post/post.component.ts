@@ -15,7 +15,7 @@ export class PostComponent implements OnInit {
     title: '',
     author: '',
     content: '',
-    comments: {}
+    comments: []
   };
 
   constructor(private postService: PostsService, private route: ActivatedRoute) { }
