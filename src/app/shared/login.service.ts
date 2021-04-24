@@ -1,3 +1,4 @@
+import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -11,14 +12,7 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  loggedUser: User = {
-    name: '',
-    email: '',
-    password: '',
-    admin: false
-  };
-
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private localStorageServ: LocalStorageService) { }
 
   logIn(user: any): void {
     this.http.get<User[]>(`${environment.baseUrl}/users?email=${user.email}&password=${user.password}`)
@@ -27,9 +21,9 @@ export class LoginService {
         if (receivedUser.length === 0) {
           console.log('Wrong email or password');
         } else {
-          this.loggedUser = receivedUser[0];
+          this.localStorageServ.setUser(receivedUser[0]);
           this.router.navigate(['/main']);
-          console.log(this.loggedUser);
+          console.log(this.localStorageServ.getUser());
         }
       });
   }
@@ -49,7 +43,7 @@ export class LoginService {
         })
       ).subscribe((newUser: User) => {
         console.log(newUser);
-        this.loggedUser = newUser;
+        this.localStorageServ.setUser(newUser);
         this.router.navigate(['/main']);
       }, () => {
         console.log('Error!');

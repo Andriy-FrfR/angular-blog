@@ -10,25 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class PostComponent implements OnInit {
   id = +this.route.snapshot.params.id;
 
-  activePost: Post = {
-    id: 0,
-    title: '',
-    author: '',
-    content: '',
-    comments: []
-  };
+  activePost: Post = this.postService.activePost;
 
   constructor(private postService: PostsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.postService.posts);
-    this.activePost = this.postService.posts[this.postService.posts.findIndex((post) => {
-      if (post.id === this.id) {
-        return true;
-      } else {
-        return false;
-      }
-    })];
+    this.activePost = this.postService.defineActivePost(this.id);
   }
 
 }

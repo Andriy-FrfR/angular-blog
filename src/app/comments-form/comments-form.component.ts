@@ -11,7 +11,7 @@ export class CommentsFormComponent implements OnInit {
 
   commentsForm: FormGroup = new FormGroup({
     commentBody: new FormControl('', [
-      Validators.minLength(3),
+      Validators.minLength(10),
       Validators.maxLength(300)
     ])
   });
@@ -22,7 +22,12 @@ export class CommentsFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.postService.addComment();
+    console.log(this.commentsForm.valid);
+    if (this.commentsForm.valid) {
+      this.postService.addComment({
+        body: this.commentsForm.controls.commentBody.value,
+      });
+    }
   }
 
 }
