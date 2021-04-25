@@ -10,12 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 export class PostComponent implements OnInit {
   id = +this.route.snapshot.params.id;
 
-  activePost: Post = this.postService.activePost;
+  activePost!: Post;
 
-  constructor(private postService: PostsService, private route: ActivatedRoute) { }
+  constructor(private postsService: PostsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activePost = this.postService.defineActivePost(this.id);
+    this.postsService.getPosts()
+      .subscribe((posts: Post[]) => {
+        this.postsService.posts = posts;
+        this.activePost = this.postsService.defineActivePost(this.id);
+      });
   }
 
 }

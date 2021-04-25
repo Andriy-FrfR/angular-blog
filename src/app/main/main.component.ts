@@ -1,5 +1,5 @@
 import { LocalStorageService } from './../shared/local-storage.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -14,6 +14,11 @@ export class MainComponent implements OnInit {
   }
 
   onSignOut(): void {
+    this.localStorageServ.signOut();
+  }
+
+  @HostListener('window:beforeunload')
+  onBeforeUnload(): void {
     this.localStorageServ.signOut();
   }
 
