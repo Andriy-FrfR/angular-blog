@@ -17,9 +17,4 @@ export class MainComponent implements OnInit {
     this.localStorageServ.signOut();
   }
 
-  @HostListener('window:beforeunload')
-  onBeforeUnload(): void {
-    this.localStorageServ.signOut();
-  }
-
 }

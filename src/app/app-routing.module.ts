@@ -4,6 +4,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 const mainRoutes: Routes = [
   { path: 'post/:id', component: PostComponent},
@@ -11,7 +12,7 @@ const mainRoutes: Routes = [
 ];
 
 const routes: Routes = [
-  {path: 'main', component: MainComponent, children: mainRoutes},
+  {path: 'main', component: MainComponent, children: mainRoutes, canActivate: [AuthGuard]},
   {path: '', component: LoginComponent}
 ];
 
