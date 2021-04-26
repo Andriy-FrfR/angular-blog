@@ -1,5 +1,6 @@
 import { LocalStorageService } from './../shared/local-storage.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../login/login.component';
 
 @Component({
   selector: 'app-main',
@@ -8,9 +9,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  loggedUser!: User;
+
   constructor(private localStorageServ: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.loggedUser = this.localStorageServ.getUser();
   }
 
   onSignOut(): void {

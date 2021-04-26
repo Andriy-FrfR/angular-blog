@@ -27,7 +27,7 @@ export class PostsService {
   posts: Post[] = [];
   activePost!: Post;
 
-  constructor(private http: HttpClient, private loginService: LoginService, private localStorageServ: LocalStorageService) { }
+  constructor(private http: HttpClient, private localStorageServ: LocalStorageService) { }
 
   getPosts(): any {
     return this.http.get<Post[]>(`${environment.baseUrl}/posts`);

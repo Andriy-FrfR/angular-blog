@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LocalStorageService } from '../shared/local-storage.service';
 import { LoginService } from '../shared/login.service';
 
 export interface User {
@@ -53,9 +55,12 @@ export class LoginComponent implements OnInit {
     ])
   });
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private localStorageServ: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.localStorageServ.getUser()) {
+      this.router.navigate(['main']);
+    }
   }
 
   onLogIn(): void {
@@ -70,6 +75,7 @@ export class LoginComponent implements OnInit {
   onSignUp(): void {
     if (this.signUpForm.valid) {
       this.loginService.signUp({
+        name: this.signUpForm.controls.name.value,
         email: this.signUpForm.controls.email.value,
         password: this.signUpForm.controls.password.value,
         admin: false

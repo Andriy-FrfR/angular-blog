@@ -1,0 +1,16 @@
+<div class="post">
+  <div class="post-title">{{ activePost.title }}</div>
+  <div class="post-author">Author: {{ activePost.author }}</div>
+  <hr>
+  <div class="post-content">{{ activePost.content }}</div>
+  <hr>
+</div>
+
+<div class="comments">
+  <span class="comments-title">Comments:</span>
+  <div class="comment" *ngFor="let comment of activePost.comments.reverse()">
+    <span class="comment-author">{{ comment.author }}: </span>
+    <p class="comment-content">{{ comment.body }}</p>
+    <div class="comment-date">{{ comment.date | date:'yyyy, MM, dd hh:mm' }}</div>
+  </div>
+</div>

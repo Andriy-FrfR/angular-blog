@@ -22,7 +22,7 @@ export class LoginService {
           console.log('Wrong email or password');
         } else {
           this.localStorageServ.setUser(receivedUser[0]);
-          this.router.navigate(['/main']);
+          this.router.navigate(['/main/posts']);
           console.log(this.localStorageServ.getUser());
         }
       });
@@ -44,7 +44,7 @@ export class LoginService {
       ).subscribe((newUser: User) => {
         console.log(newUser);
         this.localStorageServ.setUser(newUser);
-        this.router.navigate(['/main']);
+        this.router.navigate(['/main/posts']);
       }, () => {
         console.log('Error!');
       });

@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
 import { CommentsFormComponent } from './comments-form/comments-form.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminPanelPostComponent } from './admin-panel-post/admin-panel-post.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { CommentsFormComponent } from './comments-form/comments-form.component';
     PostsComponent,
     PostComponent,
     CommentsFormComponent,
+    AdminPanelComponent,
+    AdminPanelPostComponent,
   ],
   imports: [
     BrowserModule,
