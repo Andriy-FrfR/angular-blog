@@ -1,3 +1,4 @@
+import { AdminPanelPostsService, EditingState } from './../shared/admin-panel-posts.service';
 import { LocalStorageService } from './../shared/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../login/login.component';
@@ -8,13 +9,14 @@ import { User } from '../login/login.component';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
+  editingState!: EditingState;
   loggedUser!: User;
 
-  constructor(private localStorageServ: LocalStorageService) { }
+  constructor(private localStorageServ: LocalStorageService, private adminPostsServ: AdminPanelPostsService) { }
 
   ngOnInit(): void {
     this.loggedUser = this.localStorageServ.getUser();
+    this.editingState = this.adminPostsServ.editingState;
   }
 
   onSignOut(): void {

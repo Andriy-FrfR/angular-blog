@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AdminPanelPostsService } from './../shared/admin-panel-posts.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Post, PostsService } from '../shared/posts.service';
 
 @Component({
@@ -6,12 +7,12 @@ import { Post, PostsService } from '../shared/posts.service';
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss']
 })
-export class AdminPanelComponent implements OnInit {
+export class AdminPanelComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
 
   loading = true;
 
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService, private adminPostsServ: AdminPanelPostsService) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
@@ -20,6 +21,11 @@ export class AdminPanelComponent implements OnInit {
         this.posts = this.postsService.posts;
         this.loading = false;
       });
+
+    this.adminPostsServ.setEditing();
   }
 
+  ngOnDestroy(): void {
+    this.adminPostsServ.setNotEditing();
+  }
 }

@@ -1,4 +1,4 @@
-<header>
+<header [class.admin]="editingState.isEditing">
   Angular Blog
   <div class="header-links">
     <a *ngIf="loggedUser.admin === true" routerLink="admin-panel/posts">Edit</a>

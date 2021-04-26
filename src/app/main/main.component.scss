@@ -1,5 +1,12 @@
 header {
+  padding: 10px 15px 15px;
+
   font-size: 50px;
+  background-color: rgb(198, 163, 231);
+
+  &.admin {
+    background-color: rgb(209, 81, 81);
+  }
 }
 
 .header-links {
@@ -9,8 +16,10 @@ header {
   right: 20px;
   top: 20px;
 
-  width: 300px;
+  width: 320px;
   height: 40px;
+
+  padding: 0 15px;
 
   & a {
     display: inline-block;
@@ -19,7 +28,9 @@ header {
     border: 1px solid #000;
     border-radius: 20px;
 
+    background-color: rgba(75, 223, 179, 0.479);
     text-decoration: none;
+    color: #000;
     line-height: 38px;
     font-size: 20px;
     text-align: center;
