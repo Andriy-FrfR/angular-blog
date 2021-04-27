@@ -10,7 +10,7 @@ import { Post, PostsService } from '../shared/posts.service';
 })
 export class AdminPanelPostComponent implements OnInit {
   id = +this.route.snapshot.params.id;
-
+  confirm = false;
   activePost!: Post;
 
   constructor(private postsService: PostsService, private route: ActivatedRoute, private adminPostsServ: AdminPanelPostsService) { }
@@ -23,5 +23,21 @@ export class AdminPanelPostComponent implements OnInit {
       });
 
     this.adminPostsServ.setEditing();
+  }
+
+  changeBtnClick(): void {
+
+  }
+
+  showWarn(): void {
+    this.confirm = true;
+  }
+
+  hideWarn(): void {
+    this.confirm = false;
+  }
+
+  onConfirmBtnClick(): void {
+    this.adminPostsServ.removePost(this.activePost);
   }
 }

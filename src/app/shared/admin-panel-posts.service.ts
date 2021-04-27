@@ -1,3 +1,7 @@
+import { Router } from '@angular/router';
+import { environment } from './../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Post, PostsService } from './posts.service';
 import { Injectable } from '@angular/core';
 
 export interface EditingState {
@@ -12,7 +16,7 @@ export class AdminPanelPostsService {
     isEditing: false
   };
 
-  constructor() { }
+  constructor(private http: HttpClient, private postServ: PostsService, private router: Router) { }
 
   setEditing(): void {
     this.editingState.isEditing = true;
@@ -20,5 +24,12 @@ export class AdminPanelPostsService {
 
   setNotEditing(): void {
     this.editingState.isEditing = false;
+  }
+
+  removePost(post: Post): void {
+    this.http.delete(`${environment.baseUrl}/posts/${post.id}`)
+      .subscribe(() => {
+        this.router.navigate(['main/admin-panel/posts']);
+      });
   }
 }
