@@ -1,5 +1,6 @@
 import { Post, PostsService } from '../shared/posts.service';
 import { Component, OnInit } from '@angular/core';
+import { AdminPanelPostsService } from '../shared/admin-panel-posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -8,10 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
-
   loading = true;
 
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService, private adminPostsServ: AdminPanelPostsService) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
@@ -20,6 +20,8 @@ export class PostsComponent implements OnInit {
         this.posts = this.postsService.posts;
         this.loading = false;
       });
+
+    this.adminPostsServ.setNotEditing();
   }
 
 }

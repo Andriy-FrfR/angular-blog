@@ -1,7 +1,8 @@
 <header [class.admin]="editingState.isEditing">
-  Angular Blog
+  {{ editingState.isEditing ? 'Admin Panel' : 'Angular Blog' }}
   <div class="header-links">
-    <a *ngIf="loggedUser.admin === true" routerLink="admin-panel/posts">Edit</a>
+    <a *ngIf="loggedUser.admin === true && editingState.isEditing === false" routerLink="admin-panel/posts">Edit</a>
+    <a *ngIf="loggedUser.admin === true && editingState.isEditing === true" routerLink="posts">Done</a>
     <a routerLink="" (click)="onSignOut()">Sign Out</a>
   </div>
 </header>

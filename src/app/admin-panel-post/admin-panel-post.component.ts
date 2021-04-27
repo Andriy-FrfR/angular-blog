@@ -8,7 +8,7 @@ import { Post, PostsService } from '../shared/posts.service';
   templateUrl: './admin-panel-post.component.html',
   styleUrls: ['./admin-panel-post.component.scss']
 })
-export class AdminPanelPostComponent implements OnInit, OnDestroy {
+export class AdminPanelPostComponent implements OnInit {
   id = +this.route.snapshot.params.id;
 
   activePost!: Post;
@@ -24,9 +24,4 @@ export class AdminPanelPostComponent implements OnInit, OnDestroy {
 
     this.adminPostsServ.setEditing();
   }
-
-  ngOnDestroy(): void {
-    this.adminPostsServ.setNotEditing();
-  }
-
 }

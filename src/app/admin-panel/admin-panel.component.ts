@@ -7,7 +7,7 @@ import { Post, PostsService } from '../shared/posts.service';
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss']
 })
-export class AdminPanelComponent implements OnInit, OnDestroy {
+export class AdminPanelComponent implements OnInit {
   posts: Post[] = [];
 
   loading = true;
@@ -23,9 +23,5 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
       });
 
     this.adminPostsServ.setEditing();
-  }
-
-  ngOnDestroy(): void {
-    this.adminPostsServ.setNotEditing();
   }
 }

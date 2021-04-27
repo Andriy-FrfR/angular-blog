@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.localStorageServ.getUser()) {
-      this.router.navigate(['main']);
+      this.router.navigate(['main/posts']);
     }
   }
 
