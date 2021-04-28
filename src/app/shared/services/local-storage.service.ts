@@ -1,4 +1,4 @@
-import { User } from './../login/login.component';
+import { User } from '../../login/login.component';
 import { Injectable } from '@angular/core';
 
 @Injectable({

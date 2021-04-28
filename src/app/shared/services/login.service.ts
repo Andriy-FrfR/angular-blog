@@ -1,11 +1,11 @@
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
-import { environment } from './../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, take } from 'rxjs/operators';
 
-import { User } from './../login/login.component';
+import { User } from '../../login/login.component';
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({

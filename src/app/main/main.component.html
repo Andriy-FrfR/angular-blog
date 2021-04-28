@@ -1,8 +1,8 @@
-<header [class.admin]="editingState.isEditing">
-  {{ editingState.isEditing ? 'Admin Panel' : 'Angular Blog' }}
+<header [class.admin]="editingState.isAdminPanel">
+  {{ editingState.isAdminPanel ? 'Admin Panel' : 'Angular Blog' }}
   <div class="header-links">
-    <a *ngIf="loggedUser.admin === true && editingState.isEditing === false" routerLink="admin-panel/posts">Edit</a>
-    <a *ngIf="loggedUser.admin === true && editingState.isEditing === true" routerLink="posts">Done</a>
+    <a *ngIf="loggedUser.admin === true && editingState.isAdminPanel === false" routerLink="admin-panel/posts">Edit</a>
+    <a *ngIf="loggedUser.admin === true && editingState.isAdminPanel === true" routerLink="posts">Done</a>
     <a routerLink="" (click)="onSignOut()">Sign Out</a>
   </div>
 </header>

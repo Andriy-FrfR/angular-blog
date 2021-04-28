@@ -1,4 +1,4 @@
-import { PostsService } from './../shared/posts.service';
+import { PostsService } from '../shared/services/posts.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 

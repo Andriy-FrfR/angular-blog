@@ -1,4 +1,4 @@
-import { LocalStorageService } from './shared/local-storage.service';
+import { LocalStorageService } from '../services/local-storage.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';

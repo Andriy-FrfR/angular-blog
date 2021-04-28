@@ -1,5 +1,5 @@
-import { AdminPanelPostsService, EditingState } from './../shared/admin-panel-posts.service';
-import { LocalStorageService } from './../shared/local-storage.service';
+import { AdminPanelPostsService, EditingState } from '../shared/services/admin-panel-posts.service';
+import { LocalStorageService } from '../shared/services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../login/login.component';
 

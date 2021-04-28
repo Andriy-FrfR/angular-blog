@@ -1,6 +1,6 @@
-import { AdminPanelPostsService } from './../shared/admin-panel-posts.service';
+import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Post, PostsService } from '../shared/posts.service';
+import { Post, PostsService } from '../shared/services/posts.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -22,6 +22,6 @@ export class AdminPanelComponent implements OnInit {
         this.loading = false;
       });
 
-    this.adminPostsServ.setEditing();
+    this.adminPostsServ.setAdminPanel();
   }
 }

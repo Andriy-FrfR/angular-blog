@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LocalStorageService } from '../shared/local-storage.service';
-import { LoginService } from '../shared/login.service';
+import { LocalStorageService } from '../shared/services/local-storage.service';
+import { LoginService } from '../shared/services/login.service';
 
 export interface User {
   name: string;

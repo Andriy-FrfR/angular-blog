@@ -1,6 +1,6 @@
-import { Post, PostsService } from '../shared/posts.service';
+import { Post, PostsService } from '../shared/services/posts.service';
 import { Component, OnInit } from '@angular/core';
-import { AdminPanelPostsService } from '../shared/admin-panel-posts.service';
+import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
         this.loading = false;
       });
 
-    this.adminPostsServ.setNotEditing();
+    this.adminPostsServ.setNotAdminPanel();
   }
 
 }

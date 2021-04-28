@@ -1,7 +1,7 @@
-import { Post, PostsService } from '../shared/posts.service';
+import { Post, PostsService } from '../shared/services/posts.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AdminPanelPostsService } from '../shared/admin-panel-posts.service';
+import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
 
 @Component({
   selector: 'app-post',
@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
         this.activePost = this.postsService.defineActivePost(this.id);
       });
 
-    this.adminPostsServ.setNotEditing();
+    this.adminPostsServ.setNotAdminPanel();
   }
 
 }

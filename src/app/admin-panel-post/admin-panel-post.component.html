@@ -1,11 +1,39 @@
 <div class="post">
-  <div class="post-title">{{ activePost.title }}</div>
+  <div class="post-title-wrapper">
+    <div class="post-title" *ngIf="!editingState.isEditing">{{ activePost.title }}</div>
+    <form [formGroup]="postTitleForm">
+      <textarea
+        type="text"
+        class="post-title-textarea"
+        formControlName="postTitleTextarea"
+        maxlength="70"
+        [value]="activePost.title"
+        (keydown.enter)="confirmEdit()"
+        *ngIf="editingState.isEditing"
+      ></textarea>
+    </form>
+  </div>
   <div class="post-author">Author: {{ activePost.author }}</div>
   <hr>
-  <div class="post-content">{{ activePost.content }}</div>
+  <div class="post-content" *ngIf="!editingState.isEditing">{{ activePost.content }}</div>
+  <form [formGroup]="postContentForm">
+    <textarea
+      type="text"
+      class="post-content-textarea"
+      rows="10"
+      maxlength="5000"
+      formControlName="postContentTextarea"
+      [value]="activePost.content"
+      (keydown.enter)="confirmEdit()"
+      *ngIf="editingState.isEditing"
+    ></textarea>
+  </form>
   <hr>
   <div class="edit-buttons">
-    <button (click)="changeBtnClick()"><img src="../../assets/images/pencil.png" alt=""></button>
+    <button (click)="editBtnClick()">
+      <img src="../../assets/images/pencil.png" alt="Lorem Ipsum" *ngIf="!editingState.isEditing">
+      <img src="../../assets/images/cross.ico" alt="Lorem Ipsum" *ngIf="editingState.isEditing">
+    </button>
     <button (click)="showWarn()"><img src="../../assets/images/trash.png" alt=""></button>
   </div>
 </div>

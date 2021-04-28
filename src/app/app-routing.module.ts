@@ -1,5 +1,5 @@
 import { AdminPanelPostComponent } from './admin-panel-post/admin-panel-post.component';
-import { AdminGuard } from './admin.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
@@ -7,7 +7,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const mainRoutes: Routes = [
   { path: 'post/:id', component: PostComponent },
