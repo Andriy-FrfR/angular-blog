@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { EditingState } from '../shared/services/admin-panel-posts.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -64,20 +64,6 @@ export class AdminPanelPostComponent implements OnInit {
     this.editingState.isEditing = false;
   }
 
-  //  Delete post
-
-  showWarn(): void {
-    this.confirm = true;
-  }
-
-  hideWarn(): void {
-    this.confirm = false;
-  }
-
-  onConfirmBtnClick(): void {
-    this.adminPostsServ.removePost(this.activePost);
-  }
-
   // Edit post
 
   editBtnClick(): void {
@@ -102,5 +88,29 @@ export class AdminPanelPostComponent implements OnInit {
 
       this.editBtnClick();
     }
+  }
+
+  //  Delete post
+
+  showWarn(): void {
+    this.confirm = true;
+  }
+
+  hideWarn(): void {
+    this.confirm = false;
+  }
+
+  onConfirmBtnClick(): void {
+    this.adminPostsServ.removePost(this.activePost);
+  }
+
+  // Delete comment
+
+  onDeleteBtnClick(id: number | undefined): void {
+    this.adminPostsServ.removeComment(id, this.activePost)
+      .subscribe((updatedPost) => {
+        console.log(updatedPost);
+        this.activePost = updatedPost;
+      });
   }
 }

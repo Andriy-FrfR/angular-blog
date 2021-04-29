@@ -109,6 +109,23 @@
 
     text-align: right;
   }
+
+  &-delete-btn {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+
+    width: 30px;
+    height: 30px;
+
+    text-align: right;
+    background-color: #fff;
+    cursor: pointer;
+    
+    & img {
+      width: 100%;
+    }
+  }
 }
 
 hr {

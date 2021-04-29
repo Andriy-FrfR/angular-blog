@@ -52,10 +52,13 @@
 
 <div class="comments">
   <span class="comments-title">Comments:</span>
-  <div class="comment" *ngFor="let comment of activePost.comments.reverse()">
+  <div class="comment" *ngFor="let comment of activePost.comments.reverse(); let i = index">
     <span class="comment-author">{{ comment.author }}: </span>
     <p class="comment-content">{{ comment.body }}</p>
     <div class="comment-date">{{ comment.date | date:'yyyy, MM, dd hh:mm' }}</div>
+    <button class="comment-delete-btn" (click)="onDeleteBtnClick(comment.id)">
+      <img src="../../assets/images/cross.ico" alt="Lorem ipsum">
+    </button>
   </div>
 </div>
 
