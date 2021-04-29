@@ -1,32 +1,40 @@
 <div class="post">
   <div class="post-title-wrapper">
     <div class="post-title" *ngIf="!editingState.isEditing">{{ activePost.title }}</div>
-    <form [formGroup]="postTitleForm">
+    <form [formGroup]="postTitleForm" *ngIf="editingState.isEditing">
       <textarea
         type="text"
         class="post-title-textarea"
+        [class.error]="postTitleForm.invalid && postTitleForm.touched"
         formControlName="postTitleTextarea"
-        maxlength="70"
-        [value]="activePost.title"
-        (keydown.enter)="confirmEdit()"
-        *ngIf="editingState.isEditing"
+        [maxlength]="postTitleParams.maxLength"
+        [ngModel]="activePost.title"
+        (keydown.enter)="confirmEdit($event)"
       ></textarea>
+      <div class="error-message" *ngIf="postTitleForm.invalid && postTitleForm.touched">
+        <div *ngIf="postTitleForm.controls.postTitleTextarea.errors?.required">Title is required</div>
+        <div *ngIf="postTitleForm.controls.postTitleTextarea.errors?.minlength">Min length of title is {{ postTitleParams.minLength }} symbols</div>
+      </div>
     </form>
   </div>
   <div class="post-author">Author: {{ activePost.author }}</div>
   <hr>
   <div class="post-content" *ngIf="!editingState.isEditing">{{ activePost.content }}</div>
-  <form [formGroup]="postContentForm">
+  <form [formGroup]="postContentForm" *ngIf="editingState.isEditing">
     <textarea
       type="text"
       class="post-content-textarea"
+      [class.error]="postContentForm.invalid && postContentForm.touched"
       rows="10"
-      maxlength="5000"
+      [maxlength]="postContentParams.maxLength"
       formControlName="postContentTextarea"
-      [value]="activePost.content"
-      (keydown.enter)="confirmEdit()"
-      *ngIf="editingState.isEditing"
+      [ngModel]="activePost.content"
+      (keydown.enter)="confirmEdit($event)"
     ></textarea>
+    <div class="error-message" *ngIf="postContentForm.invalid && postContentForm.touched">
+      <div *ngIf="postContentForm.controls.postContentTextarea.errors?.required">Title is required</div>
+      <div *ngIf="postContentForm.controls.postContentTextarea.errors?.minlength">Min length of title is {{ postContentParams.minLength }} symbols</div>
+    </div>
   </form>
   <hr>
   <div class="edit-buttons">
@@ -35,6 +43,10 @@
       <img src="../../assets/images/cross.ico" alt="Lorem Ipsum" *ngIf="editingState.isEditing">
     </button>
     <button (click)="showWarn()"><img src="../../assets/images/trash.png" alt=""></button>
+    <br>
+    <button (click)="confirmEdit($event)" *ngIf="editingState.isEditing" [ngStyle]="{marginTop: '10px'}">
+      <img src="../../assets/images/check.png" alt="Lorem Ipsum">
+    </button>
   </div>
 </div>
 

@@ -14,11 +14,17 @@
     &-textarea {
       width: 100%;
 
+      margin: 0 0 5px 0;
+
       box-shadow: 0 0 0 2px rgb(122, 122, 122);
       resize: none;
       font-size: 50px;
       font-weight: bold;
       font-family: 'Roboto';
+
+      &.error {
+        box-shadow: 0 0 0 2px rgb(211, 65, 65);
+      }
     }
   }
   
@@ -37,12 +43,16 @@
     &-textarea {
       width: 100%;
 
-      margin: 15px 0 0 0;
+      margin: 15px 0 5px 0;
 
       box-shadow: 0 0 0 2px rgb(122, 122, 122);
       resize: none;
       font-size: 25px;
       font-family: 'Roboto';
+
+      &.error {
+        box-shadow: 0 0 0 2px rgb(211, 65, 65);
+      }
     }
   }
 

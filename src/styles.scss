@@ -14,3 +14,12 @@
 body {
   font-family: "Roboto";
 }
+
+.error-message {
+  box-shadow: 0 0 0 2px rgb(235, 66, 66);
+
+  padding: 5px;
+
+  line-height: 20px;
+  color: rgb(235, 66, 66);
+}

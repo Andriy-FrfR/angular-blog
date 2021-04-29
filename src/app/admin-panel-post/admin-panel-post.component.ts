@@ -1,9 +1,15 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { EditingState } from '../shared/services/admin-panel-posts.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
 import { Post, PostsService } from '../shared/services/posts.service';
+import { emptyValidator } from '../shared/validators/empty.validator';
+
+export interface ValidatorParams {
+  minLength: number;
+  maxLength: number;
+}
 
 @Component({
   selector: 'app-admin-panel-post',
@@ -15,20 +21,32 @@ export class AdminPanelPostComponent implements OnInit {
   confirm = false;
   activePost!: Post;
   editingState!: EditingState;
+  postTitleParams: ValidatorParams = {
+    minLength: 10,
+    maxLength: 70
+  };
+  postContentParams: ValidatorParams = {
+    minLength: 30,
+    maxLength: 5000
+  };
 
   // reactive forms
 
   postTitleForm = new FormGroup({
     postTitleTextarea: new FormControl('', [
-      Validators.minLength(5),
-      Validators.maxLength(70)
+      Validators.required,
+      Validators.minLength(this.postTitleParams.minLength),
+      Validators.maxLength(this.postTitleParams.maxLength),
+      emptyValidator(this.postTitleParams.minLength)
     ])
   });
 
   postContentForm = new FormGroup({
     postContentTextarea: new FormControl('', [
-      Validators.minLength(30),
-      Validators.maxLength(5000)
+      Validators.required,
+      Validators.minLength(this.postContentParams.minLength),
+      Validators.maxLength(this.postContentParams.maxLength),
+      emptyValidator(this.postContentParams.minLength)
     ])
   });
 
@@ -67,8 +85,13 @@ export class AdminPanelPostComponent implements OnInit {
     console.log(this.activePost);
   }
 
-  confirmEdit(): void {
+  confirmEdit(event: Event): void {
+    event.preventDefault();
+
+    console.log(this.postContentForm.valid && this.postTitleForm.valid);
+
     if (this.postContentForm.valid && this.postTitleForm.valid) {
+
       this.adminPostsServ.editPost(
         this.activePost,
         this.postTitleForm.controls.postTitleTextarea.value,

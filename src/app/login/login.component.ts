@@ -1,8 +1,10 @@
+import { ValidatorParams } from './../admin-panel-post/admin-panel-post.component';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LocalStorageService } from '../shared/services/local-storage.service';
 import { LoginService } from '../shared/services/login.service';
+import { emptyValidator } from '../shared/validators/empty.validator';
 
 export interface User {
   name: string;
@@ -20,6 +22,18 @@ export class LoginComponent implements OnInit {
 
   signUp = false; // Changes logIn and signUp forms
 
+  emailParams: ValidatorParams = {
+    minLength: 6,
+    maxLength: 30
+  };
+  passwordParams: ValidatorParams = {
+    minLength: 6,
+    maxLength: 20
+  };
+  nameParams: ValidatorParams = {
+    minLength: 3,
+    maxLength: 14
+  };
   // Forms
 
   logInForm: FormGroup = new FormGroup({
@@ -51,7 +65,8 @@ export class LoginComponent implements OnInit {
     name: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.maxLength(14)
+      Validators.maxLength(14),
+      emptyValidator(3)
     ])
   });
 
