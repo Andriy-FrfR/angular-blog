@@ -48,6 +48,7 @@ export class PostsService {
     console.log(this.localStorageServ.getUser());
     console.log(this.activePost);
     this.activePost.comments.push({
+      id: this.activePost.comments.length + 1,
       author: this.localStorageServ.getUser().name,
       body: obj.body,
       date: new Date()
