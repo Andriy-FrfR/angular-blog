@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 export interface Post {
-  id: number;
+  id?: number;
   title: string;
   author: string;
   content: string;

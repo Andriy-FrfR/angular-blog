@@ -9,6 +9,7 @@
 
   &-title {
     font-size: 50px;
+    padding: 0 240px 0 0;
   }
   
   &-author {
@@ -37,6 +38,128 @@
     text-align: center;
     line-height: 50px;
     text-transform: uppercase;
+  }
+}
+
+.add-post-btn {
+  display: block;
+  width: 300px;
+  height: 50px;
+
+  margin: 0 auto 20px;
+  border-radius: 20px;
+
+  background-color: rgb(148, 206, 134);
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-post-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  max-height: 700px;
+
+  padding: 10px;
+
+  background-color: #fff;
+
+  & .title {
+    width: 100%;
+
+    margin: 0 0 5px 0;
+    padding: 5px;
+
+    box-shadow: 0 0 0 2px rgb(122, 122, 122);
+    resize: none;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    
+    &::placeholder {
+      font-style: italic;
+    }
+
+    &.error {
+      box-shadow: 0 0 0 2px rgb(211, 65, 65);
+
+      &::placeholder {
+        color: rgb(228, 95, 95);
+      }
+    }
+  }
+
+  & .content {
+    width: 100%;
+
+    margin: 15px 0 5px 0;
+    padding: 5px;
+
+    box-shadow: 0 0 0 2px rgb(122, 122, 122);
+    resize: none;
+    font-size: 25px;
+    font-family: 'Roboto';
+
+    &::placeholder {
+      font-style: italic;
+    }
+
+    &.error {
+      box-shadow: 0 0 0 2px rgb(211, 65, 65);
+
+      &::placeholder {
+        color: rgb(228, 95, 95);
+      }
+    }
+  }
+
+  & .buttons {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translate(-50%, 0);
+
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+
+    & button {
+      display: inline-block;
+      width: 200px;
+      height: 50px;
+
+      border-radius: 50px;
+
+      font-size: 20px;
+      cursor: pointer;
+
+      &.confirm-btn {
+        background-color: rgb(47, 190, 178);
+      }
+
+      &.reject-btn {
+        background-color: rgb(228, 95, 95);
+      }
+    }
+  }
+
+  &-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    background-color: #000;
+    opacity: 50%;
   }
 }
 

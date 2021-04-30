@@ -1,3 +1,4 @@
+import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
@@ -19,7 +20,7 @@ export class AdminPanelPostsService {
     isEditing: false
   };
 
-  constructor(private http: HttpClient, private postServ: PostsService, private router: Router) { }
+  constructor(private http: HttpClient, private localStorageServ: LocalStorageService, private router: Router) { }
 
   setAdminPanel(): void {
     this.editingState.isAdminPanel = true;
@@ -78,5 +79,18 @@ export class AdminPanelPostsService {
         return false;
       }
     });
+  }
+
+  // Add post
+
+  addPost(postTitle: string, postContent: string): Observable<Post> {
+    const newPost: Post = {
+      title: postTitle,
+      content: postContent,
+      author: this.localStorageServ.getUser().name,
+      comments: []
+    };
+
+    return this.http.post<Post>(`${environment.baseUrl}/posts/`, newPost);
   }
 }
