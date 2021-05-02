@@ -12,6 +12,7 @@ import { PostComponent } from './post/post.component';
 import { CommentsFormComponent } from './comments-form/comments-form.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminPanelPostComponent } from './admin-panel-post/admin-panel-post.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminPanelPostComponent } from './admin-panel-post/admin-panel-post.com
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

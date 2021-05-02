@@ -23,5 +23,4 @@ export class PostComponent implements OnInit {
 
     this.adminPostsServ.setNotAdminPanel();
   }
-
 }

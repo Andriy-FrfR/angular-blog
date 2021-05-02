@@ -1,4 +1,4 @@
-<form [formGroup]="commentsForm" (submit)="onSubmit()">
+<form [formGroup]="commentsForm" (submit)="onSubmit(null)">
   <textarea
     type="text"
     class="comments-textarea"
@@ -6,6 +6,7 @@
     minlength="10"
     maxlength="400"
     placeholder="Type a comment"
+    (keydown.enter)="onSubmit($event)"
   ></textarea>
   <input class="submit-input" type="submit">
 </form>

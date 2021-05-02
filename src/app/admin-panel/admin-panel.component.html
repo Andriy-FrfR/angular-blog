@@ -32,6 +32,7 @@
     </div>
     <div class="buttons">
       <button class="confirm-btn" (click)="addPost()">Create post</button>
+      <br *ngIf="breakEditButtons">
       <button class="reject-btn" (click)="hidePostForm()">Cancel</button>
     </div>
   </form>

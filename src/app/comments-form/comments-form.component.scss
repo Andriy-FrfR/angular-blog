@@ -1,14 +1,20 @@
 form {
   position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
 
-  margin: 50px 0 0 0;
+  display: inline-block;
+  width: 700px;
+  max-width: 100%;
+
+  margin: 20px auto 0;
 
   text-align: center;
 }
 
 .comments-textarea {
   display: inline-block;
-  width: 700px;
+  width: 100%;
   height: 200px;
 
   border: 2px solid #000;
@@ -28,10 +34,10 @@ form {
 .submit-input {
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translate(-50%, -100%);
+  left: 0;
+  transform: translate(0, -100%);
 
-  width: 700px;
+  width: 100%;
   height: 40px;
 
   background-color: rgb(29, 223, 120);

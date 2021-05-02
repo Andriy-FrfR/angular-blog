@@ -11,6 +11,12 @@
     font-size: 50px;
     padding: 0 240px 0 0;
     word-break: break-all;
+
+    @media (max-width: 768px) {
+      padding: 0;
+
+      font-size: 40px;
+    }
   }
   
   &-author {
@@ -39,6 +45,13 @@
     text-align: center;
     line-height: 50px;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      position: static;
+      transform: translate(0, 0);
+
+      margin: 10px auto 5px;
+    }
   }
 }
 
@@ -54,6 +67,10 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    width: 250px;
+  }
 }
 
 .add-post-form {
@@ -83,6 +100,14 @@
     font-size: 50px;
     font-weight: bold;
     font-family: 'Roboto';
+
+    @media (max-width: 768px) {
+      font-size: 45px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 30px;
+    }
     
     &::placeholder {
       font-style: italic;
@@ -131,6 +156,17 @@
     justify-content: space-between;
     width: 60%;
 
+    text-align: center;
+
+    @media (max-width: 768px) {
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      bottom: 20px;
+    }
+
     & button {
       display: inline-block;
       width: 200px;
@@ -140,6 +176,17 @@
 
       font-size: 20px;
       cursor: pointer;
+
+      @media (max-width: 480px) {
+        width: 180px;
+        height: 40px;
+      }
+
+      &:last-child {
+        @media (max-width: 768px) {
+          margin-top: 10px;
+        }
+      }
 
       &.confirm-btn {
         background-color: rgb(47, 190, 178);

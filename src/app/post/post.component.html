@@ -5,14 +5,15 @@
   <div class="post-content">{{ activePost.content }}</div>
   <hr>
 </div>
-
 <div class="comments">
   <span class="comments-title">Comments:</span>
+  <br>
+  <app-comments-form></app-comments-form>
   <div class="comment" *ngFor="let comment of activePost.comments.reverse()">
     <span class="comment-author">{{ comment.author }}: </span>
-    <p class="comment-content">{{ comment.body }}</p>
     <div class="comment-date">{{ comment.date | date:'yyyy, MM, dd hh:mm' }}</div>
+    <p class="comment-content">{{ comment.body }}</p>
   </div>
 </div>
 
-<app-comments-form></app-comments-form>
+<a routerLink="../../posts" class="back-ref">Back</a>

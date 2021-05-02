@@ -4,7 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Post, PostsService } from '../shared/services/posts.service';
 import { ValidatorParams } from '../admin-panel-post/admin-panel-post.component';
 import { emptyValidator } from '../shared/validators/empty.validator';
-import { ThrowStmt } from '@angular/compiler';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-admin-panel',
@@ -23,6 +23,7 @@ export class AdminPanelComponent implements OnInit {
     minLength: 30,
     maxLength: 5000
   };
+  breakEditButtons = false;
 
   // Add post form
 
@@ -41,7 +42,9 @@ export class AdminPanelComponent implements OnInit {
     ])
   });
 
-  constructor(private postsService: PostsService, private adminPostsServ: AdminPanelPostsService) { }
+  constructor(private postsService: PostsService,
+              private adminPostsServ: AdminPanelPostsService,
+              private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
@@ -52,6 +55,16 @@ export class AdminPanelComponent implements OnInit {
       });
 
     this.adminPostsServ.setAdminPanel();
+
+    this.breakpointObserver
+      .observe(['(max-width: 768px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.breakEditButtons = true;
+        } else {
+          this.breakEditButtons = false;
+        }
+      });
   }
 
   // Add posts

@@ -1,5 +1,5 @@
 <header [class.admin]="editingState.isAdminPanel">
-  {{ editingState.isAdminPanel ? 'Admin Panel' : 'Angular Blog' }}
+  <p class="header-heading">{{ editingState.isAdminPanel ? 'Admin Panel' : 'Angular Blog' }}</p>
   <div class="header-links">
     <a *ngIf="loggedUser.admin === true && editingState.isAdminPanel === false" routerLink="admin-panel/posts">Edit</a>
     <a *ngIf="loggedUser.admin === true && editingState.isAdminPanel === true" routerLink="posts">Done</a>

@@ -11,6 +11,12 @@
     font-size: 50px;
     padding: 0 240px 0 0;
     word-break: break-all;
+
+    @media (max-width: 768px) {
+      padding: 0;
+
+      font-size: 40px;
+    }
   }
   
   &-author {
@@ -39,6 +45,13 @@
     text-align: center;
     line-height: 50px;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      position: static;
+      transform: translate(0, 0);
+
+      margin: 10px auto 5px;
+    }
   }
 }
 

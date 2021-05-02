@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
 import { Post, PostsService } from '../shared/services/posts.service';
 import { emptyValidator } from '../shared/validators/empty.validator';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 export interface ValidatorParams {
   minLength: number;
@@ -29,6 +30,7 @@ export class AdminPanelPostComponent implements OnInit {
     minLength: 30,
     maxLength: 5000
   };
+  breakEditButtons = false;
 
   // reactive forms
 
@@ -50,7 +52,10 @@ export class AdminPanelPostComponent implements OnInit {
     ])
   });
 
-  constructor(private postsService: PostsService, private route: ActivatedRoute, private adminPostsServ: AdminPanelPostsService) { }
+  constructor(private postsService: PostsService,
+              private route: ActivatedRoute,
+              private adminPostsServ: AdminPanelPostsService,
+              private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
@@ -62,6 +67,18 @@ export class AdminPanelPostComponent implements OnInit {
     this.adminPostsServ.setAdminPanel();
     this.editingState = this.adminPostsServ.editingState;
     this.editingState.isEditing = false;
+
+    // media quires
+
+    this.breakpointObserver
+      .observe(['(max-width: 480px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.breakEditButtons = true;
+        } else {
+          this.breakEditButtons = false;
+        }
+      });
   }
 
   // Edit post

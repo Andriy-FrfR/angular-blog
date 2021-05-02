@@ -1,71 +1,73 @@
-<header>Angular Blog</header>
+<div class="component-wrapper">
+  <header>Angular Blog</header>
 
-<div class="container">
+  <div class="container">
 
-  <span class="welcome">Welcome!</span>
+    <span class="welcome">Welcome!</span>
 
-  <form *ngIf="!signUp" [formGroup]="logInForm">
-    <input
-      type="email" formControlName="email" placeholder="Type your email:"
-      [class.error]="logInForm.controls.email.invalid && logInForm.controls.email.touched"
-    >
-    <div class="error-message" *ngIf="logInForm.controls.email.invalid && logInForm.controls.email.touched">
-      <div *ngIf="logInForm.controls.email.errors?.required">Email is required</div>
-      <div *ngIf="logInForm.controls.email.errors?.email">Wrong form of email</div>
-      <div *ngIf="logInForm.controls.email.errors?.minlength">Min length of email is {{ emailParams.minLength }} symbols</div>
-      <div *ngIf="logInForm.controls.email.errors?.maxlength">Max length of email is {{ emailParams.maxLength }} symbols</div>
-    </div>
-    <br>
-    <input
-      type="password" formControlName="password" placeholder="Type your password:"
-      [class.error]="logInForm.controls.password.invalid && logInForm.controls.password.touched"
-    >
-    <div class="error-message" *ngIf="logInForm.controls.password.invalid && logInForm.controls.password.touched">
-      <div *ngIf="logInForm.controls.password.errors?.required">Password is required</div>
-      <div *ngIf="logInForm.controls.password.errors?.minlength">Min length of password is {{ passwordParams.minLength }} symbols</div>
-      <div *ngIf="logInForm.controls.password.errors?.maxlength">Max length of password is {{ passwordParams.maxLength }} symbols</div>
-    </div>
-    <br>
-    <input class="submit-input" type="submit" (click)="onLogIn()">
-  </form>
+    <form *ngIf="!signUp" [formGroup]="logInForm">
+      <input
+        type="email" formControlName="email" placeholder="Type your email:"
+        [class.error]="logInForm.controls.email.invalid && logInForm.controls.email.touched"
+      >
+      <div class="error-message" *ngIf="logInForm.controls.email.invalid && logInForm.controls.email.touched">
+        <div *ngIf="logInForm.controls.email.errors?.required">Email is required</div>
+        <div *ngIf="logInForm.controls.email.errors?.email">Wrong form of email</div>
+        <div *ngIf="logInForm.controls.email.errors?.minlength">Min length of email is {{ emailParams.minLength }} symbols</div>
+        <div *ngIf="logInForm.controls.email.errors?.maxlength">Max length of email is {{ emailParams.maxLength }} symbols</div>
+      </div>
+      <br>
+      <input
+        type="password" formControlName="password" placeholder="Type your password:"
+        [class.error]="logInForm.controls.password.invalid && logInForm.controls.password.touched"
+      >
+      <div class="error-message" *ngIf="logInForm.controls.password.invalid && logInForm.controls.password.touched">
+        <div *ngIf="logInForm.controls.password.errors?.required">Password is required</div>
+        <div *ngIf="logInForm.controls.password.errors?.minlength">Min length of password is {{ passwordParams.minLength }} symbols</div>
+        <div *ngIf="logInForm.controls.password.errors?.maxlength">Max length of password is {{ passwordParams.maxLength }} symbols</div>
+      </div>
+      <br>
+      <input class="submit-input" type="submit" (click)="onLogIn()">
+    </form>
 
-  <button *ngIf="!signUp" (click)="switchSignUp()">Sign Up</button>
+    <button *ngIf="!signUp" (click)="switchSignUp()">Sign Up</button>
 
-  <form *ngIf="signUp" [formGroup]="signUpForm" name="sign-up-form">
-    <input
-      type="text" formControlName="name" placeholder="Type your name:"
-      [class.error]="signUpForm.controls.name.invalid && signUpForm.controls.name.touched"
-    >
-    <div class="error-message" *ngIf="signUpForm.controls.name.invalid && signUpForm.controls.name.touched">
-      <div *ngIf="signUpForm.controls.name.errors?.required">Name is required</div>
-      <div *ngIf="signUpForm.controls.name.errors?.minlength">Min length of name is {{ nameParams.minLength }} symbols</div>
-      <div *ngIf="signUpForm.controls.name.errors?.maxlength">Max length of name is {{ nameParams.maxLength }} symbols</div>
-    </div>
-    <br>
-    <input
-      type="email" formControlName="email" placeholder="Type your email:"
-      [class.error]="signUpForm.controls.email.invalid && signUpForm.controls.email.touched"
-    >
-    <div class="error-message" *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.touched">
-      <div *ngIf="signUpForm.controls.email.errors?.required">Email is required</div>
-      <div *ngIf="signUpForm.controls.email.errors?.email">Wrong form of email</div>
-      <div *ngIf="signUpForm.controls.email.errors?.minlength">Min length of email is {{ emailParams.minLength }} symbols</div>
-      <div *ngIf="signUpForm.controls.email.errors?.maxlength">Max length of email is {{ emailParams.maxLength }} symbols</div>
-    </div>
-    <br>
-    <input
-      type="password" formControlName="password" placeholder="Type your password:"
-      [class.error]="signUpForm.controls.password.invalid && signUpForm.controls.password.touched"
-    >
-    <div class="error-message" *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.touched">
-      <div *ngIf="signUpForm.controls.password.errors?.required">Password is required</div>
-      <div *ngIf="signUpForm.controls.password.errors?.minlength">Min length of password is {{ passwordParams.minLength }} symbols</div>
-      <div *ngIf="signUpForm.controls.password.errors?.maxlength">Max length of password is {{ passwordParams.maxLength }} symbols</div>
-    </div>
-    <br>
-    <input class="submit-input" type="submit" (click)="onSignUp()">
-  </form>
+    <form *ngIf="signUp" [formGroup]="signUpForm" name="sign-up-form">
+      <input
+        type="text" formControlName="name" placeholder="Type your name:"
+        [class.error]="signUpForm.controls.name.invalid && signUpForm.controls.name.touched"
+      >
+      <div class="error-message" *ngIf="signUpForm.controls.name.invalid && signUpForm.controls.name.touched">
+        <div *ngIf="signUpForm.controls.name.errors?.required">Name is required</div>
+        <div *ngIf="signUpForm.controls.name.errors?.minlength">Min length of name is {{ nameParams.minLength }} symbols</div>
+        <div *ngIf="signUpForm.controls.name.errors?.maxlength">Max length of name is {{ nameParams.maxLength }} symbols</div>
+      </div>
+      <br>
+      <input
+        type="email" formControlName="email" placeholder="Type your email:"
+        [class.error]="signUpForm.controls.email.invalid && signUpForm.controls.email.touched"
+      >
+      <div class="error-message" *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.touched">
+        <div *ngIf="signUpForm.controls.email.errors?.required">Email is required</div>
+        <div *ngIf="signUpForm.controls.email.errors?.email">Wrong form of email</div>
+        <div *ngIf="signUpForm.controls.email.errors?.minlength">Min length of email is {{ emailParams.minLength }} symbols</div>
+        <div *ngIf="signUpForm.controls.email.errors?.maxlength">Max length of email is {{ emailParams.maxLength }} symbols</div>
+      </div>
+      <br>
+      <input
+        type="password" formControlName="password" placeholder="Type your password:"
+        [class.error]="signUpForm.controls.password.invalid && signUpForm.controls.password.touched"
+      >
+      <div class="error-message" *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.touched">
+        <div *ngIf="signUpForm.controls.password.errors?.required">Password is required</div>
+        <div *ngIf="signUpForm.controls.password.errors?.minlength">Min length of password is {{ passwordParams.minLength }} symbols</div>
+        <div *ngIf="signUpForm.controls.password.errors?.maxlength">Max length of password is {{ passwordParams.maxLength }} symbols</div>
+      </div>
+      <br>
+      <input class="submit-input" type="submit" (click)="onSignUp()">
+    </form>
 
-  <button *ngIf="signUp" (click)="switchSignUp()">Log In</button>
+    <button *ngIf="signUp" (click)="switchSignUp()">Log In</button>
 
+  </div>
 </div>
