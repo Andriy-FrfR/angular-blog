@@ -1,6 +1,6 @@
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditingState } from '../shared/services/admin-panel-posts.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
 import { Post, PostsService } from '../shared/services/posts.service';
@@ -55,7 +55,8 @@ export class AdminPanelPostComponent implements OnInit {
   constructor(private postsService: PostsService,
               private route: ActivatedRoute,
               private adminPostsServ: AdminPanelPostsService,
-              private breakpointObserver: BreakpointObserver) { }
+              private breakpointObserver: BreakpointObserver,
+              private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
@@ -111,10 +112,12 @@ export class AdminPanelPostComponent implements OnInit {
 
   showWarn(): void {
     this.confirm = true;
+    this.renderer.addClass(document.body, 'overflow-hidden');
   }
 
   hideWarn(): void {
     this.confirm = false;
+    this.renderer.removeClass(document.body, 'overflow-hidden');
   }
 
   onConfirmBtnClick(): void {

@@ -2,6 +2,7 @@
   <textarea
     type="text"
     class="comments-textarea"
+    [class.error]="commentsForm.invalid && commentsForm.touched"
     formControlName="commentBody"
     minlength="10"
     maxlength="400"

@@ -15,6 +15,10 @@ body {
   font-family: "Roboto";
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .error-message {
   box-shadow: 0 0 0 2px rgb(235, 66, 66);
 

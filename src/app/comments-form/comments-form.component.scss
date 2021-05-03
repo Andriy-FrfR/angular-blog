@@ -25,6 +25,10 @@ form {
   font-size: 20px;
   resize: none;
 
+  &.error {
+    border: 2px solid red;
+  }
+
   &::placeholder {
     font-size: 20px;
     font-style: italic;

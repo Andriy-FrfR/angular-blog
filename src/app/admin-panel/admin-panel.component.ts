@@ -1,6 +1,6 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminPanelPostsService } from '../shared/services/admin-panel-posts.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Post, PostsService } from '../shared/services/posts.service';
 import { ValidatorParams } from '../admin-panel-post/admin-panel-post.component';
 import { emptyValidator } from '../shared/validators/empty.validator';
@@ -44,7 +44,8 @@ export class AdminPanelComponent implements OnInit {
 
   constructor(private postsService: PostsService,
               private adminPostsServ: AdminPanelPostsService,
-              private breakpointObserver: BreakpointObserver) { }
+              private breakpointObserver: BreakpointObserver,
+              private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
@@ -71,10 +72,12 @@ export class AdminPanelComponent implements OnInit {
 
   showPostForm(): void {
     this.postFormVisible = true;
+    this.renderer.addClass(document.body, 'overflow-hidden');
   }
 
   hidePostForm(): void {
     this.postFormVisible = false;
+    this.renderer.removeClass(document.body, 'overflow-hidden');
   }
 
   preventNewLine(event: Event): void {
